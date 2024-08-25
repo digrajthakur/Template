@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+
+:root {
+  --clr-primary-100: #3399FF;
+  --clr-primary-200: #007FFF;
+  --clr-primary-300: #0059B3;
+  --clr-primary-400: #003F80;
+  --clr-primary-500: #002952;
+  
+  --clr-neutral-100: #ffffff;
+  --clr-neutral-200: #e6eaef;
+  --clr-neutral-300: #c1cbd7;
+  --clr-neutral-400: #778da6;
+  --clr-neutral-500: #495b6f;
+  --clr-neutral-600: #384656;
+  --clr-neutral-700: #28323e;
+  --clr-neutral-800: #1c232b;
+  --clr-neutral-900: #101419;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1, h2, h3,
+p {
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  
+  background-color: var(--clr-neutral-900);
+  color: var(--clr-neutral-100);
+  
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  
+  padding-block: 2rem;
+}
+
+h1, h2, h3 {
+  line-height: 1.1;
+}
+
+ul[role="list"] {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  height: 2ex;
+  width: auto;
+  flex: none;
+  fill: currentColor;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+.card {
+  width: min(100% - 2rem, 45rem);
+  margin-inline: auto;
+  box-shadow: #e6b538 0px 7px 29px 0px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr auto;
+    grid-template-areas: 
+      "header image"
+      "links  image"
+      "body   body";
+  padding: 3rem;
+  
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-900);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 50em) {
+  .card {
+    grid-template-areas: 
+      "image"
+      "header"
+      "links"
+      "body";
+  justify-items: center;
+  text-align: center;
+  }
+}
+
+.card__header {
+  grid-area: header;
+}
+
+.card__title {
+  font-size: clamp(2.25rem, 5vw, 2.5rem);
+}
+
+.card__subtitle {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: normal;
+  color: var(--clr-neutral-700);
+  line-height: 40px;
+}
+
+.card__img-container {
+  grid-area: image;
+  width: 8rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__links {
+  grid-area: links;
+  display: flex;
+  gap: 1rem;
+}
+
+.card__link a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  aspect-ratio: 1 / 1;
+  border: 1px solid currentColor;
+  border-radius: 0.25em;
+  line-height: 1;
+  padding: 0.25rem;
+  background-color: var(--clr-neutral-100);
+  transition: 300ms ease;
+}
+
+.card__link a:is(:hover, :focus-visible) {
+  color: var(--clr-primary-300);
+}
+
+.card__body {
+  grid-area: body;
+}
+
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  
+  padding: 0.5em 1em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  background-color: var(--clr-neutral-900);
+  color: var(--clr-neutral-100);
+  border-radius: 0.2em;
+  transition: 300ms ease;
+}
+
+.card__cta:is(:hover, :focus-visible) {
+  box-shadow: 1rem 1rem 3.15rem 0 rgba(0, 0, 0, 0.25);
+  background-color: var(--clr-neutral-800);
+}
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="card__img-container">
+                <img class="card__img" src="https://avatars.githubusercontent.com/u/86187639?v=4" alt="A man taking a picture with a camera">
+            </div>
+            <div class="card__header">
+                <h2 class="card__title">Deepanshu Thakur</h2>
+                <h3 class="card__subtitle">Web Developer</h3>
+            </div>
+            <ul class="card__links" role="list">
+                <li class="card__link">
+                    <a href="https://www.linkedin.com/in/deepanshu-thakur-985a5a215/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="card__link">
+                    <a href="https://github.com/digrajthakur">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="card__link">
+                    <a href="https://www.instagram.com/deepanshuthakur360/">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="card__body flow">
+                <p>Hey, there!👋</p>
+                <p>
+                    I'm Web Developer with 1+ year of experience. I enjoy building sites and apps. My focus is Cloud Computing & E-commerce.
+                </p>
+                <div class="website-link">
+                    <a href="https://deepanshuportfoliowebsite.netlify.app">
+                        <i class="fa fa-globe" aria-hidden="true"><span style="padding-left: 10px;font-size: 15px;letter-spacing: 2px;">My Portfolio</span></i>
+                    </a>
+                </div>
+                <a href="https://drive.google.com/file/d/15keYN8HJeTCCahI1LLUdGTmhPKHc2GQt/view?usp=drivesdk" class="card__cta" download>
+                    <svg viewBox="0 0 640 512" width="100" title="cloud-download-alt">
+                        <path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zm-132.9 88.7L299.3 420.7c-6.2 6.2-16.4 6.2-22.6 0L171.3 315.3c-10.1-10.1-2.9-27.3 11.3-27.3H248V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v112h65.4c14.2 0 21.4 17.2 11.3 27.3z"/>
+                    </svg>
+                    Resume
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
